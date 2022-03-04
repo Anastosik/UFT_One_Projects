@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Pacific Standard Time">
+<General productName="Micro Focus UFT One" productVer="2021" os="" host="WSAMZN-SPNO0CVV"><DocLocation><![CDATA[D:\Users\CCTB_STU002\Documents\UFT One\UFT\AOS\AOS_TESTS]]></DocLocation></General>
+<Doc rID="T1"   productName= "Micro Focus UFT One"  >
+<DName><![CDATA[AOS_TESTS]]></DName>
+<Res><![CDATA[Res59]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xlsx]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:04]]></Time>
+<TimeTick>1641856624</TimeTick>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser.Navigate]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to http://advantageonlineshopping.com]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:04]]></Time>
+<TimeTick>1641856624</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="9" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser.Navigate]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act0\Row1\ssf2.xml]]></Path>
+<ASHilite><![CDATA[6619924]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:05]]></Time>
+<TimeTick>1641856625</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="11" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser.Sync]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act0\Row1\ssf3.xml]]></Path>
+<ASHilite><![CDATA[6619924]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="8" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act0\Row1\ssf1.xml]]></Path>
+<ASHilite><![CDATA[6619924]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Action rID="T7">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[Advantage Shopping]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:26]]></Time>
+<TimeTick>1641856646</TimeTick>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[Advantage Shopping]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:27]]></Time>
+<TimeTick>1641856647</TimeTick>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[dvantage]]></Obj>
+<Details plainTxt="False" ><![CDATA[WebElement]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:27]]></Time>
+<TimeTick>1641856647</TimeTick>
+<HtmlStep rID="T11">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "Check logo on Home Page": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 1/10/2022 - 15:17:29</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">Check logo on Home Page Results&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<TD class="Text" Title="">html tag&nbsp;</TD>
+				<TD class="Text" Title="">SPAN&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<TD class="Text" Title="">innertext&nbsp;</TD>
+				<TD class="Text" Title="">dvantage&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1641856649</TimeTick>
+<NodeArgs eType="Verification" icon="7" nRep="17" status="Passed" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[Checkpoint "Check logo on Home Page"]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf8.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="7" nRep="16" status="Passed" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[dvantage]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf7.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[UserMenu.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:31]]></Time>
+<TimeTick>1641856651</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="19" Source="Action1" SourceLine="25" >
+<Disp><![CDATA[UserMenu.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf9.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[CREATE NEW ACCOUNT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:33]]></Time>
+<TimeTick>1641856653</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="21" Source="Action1" SourceLine="26" >
+<Disp><![CDATA[CREATE NEW ACCOUNT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf10.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[usernameRegisterPage.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Ama2147"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:35]]></Time>
+<TimeTick>1641856655</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="23" Source="Action1" SourceLine="27" >
+<Disp><![CDATA[usernameRegisterPage.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf11.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[Email.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:35]]></Time>
+<TimeTick>1641856655</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="25" Source="Action1" SourceLine="28" >
+<Disp><![CDATA[Email.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf12.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[emailRegisterPage.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Ama2147@testers.com"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:36]]></Time>
+<TimeTick>1641856656</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="27" Source="Action1" SourceLine="29" >
+<Disp><![CDATA[emailRegisterPage.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf13.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[passwordRegisterPage.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["AmaWhite4"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:36]]></Time>
+<TimeTick>1641856656</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="29" Source="Action1" SourceLine="30" >
+<Disp><![CDATA[passwordRegisterPage.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf14.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[confirm_passwordRegisterPage.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["AmaWhite4"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:36]]></Time>
+<TimeTick>1641856656</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="31" Source="Action1" SourceLine="31" >
+<Disp><![CDATA[confirm_passwordRegisterPage.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf15.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[First Name.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:37]]></Time>
+<TimeTick>1641856657</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="33" Source="Action1" SourceLine="32" >
+<Disp><![CDATA[First Name.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf16.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[first_nameRegisterPage.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Name"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:37]]></Time>
+<TimeTick>1641856657</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="35" Source="Action1" SourceLine="33" >
+<Disp><![CDATA[first_nameRegisterPage.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf17.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[last_nameRegisterPage.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Adler"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:38]]></Time>
+<TimeTick>1641856658</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="37" Source="Action1" SourceLine="34" >
+<Disp><![CDATA[last_nameRegisterPage.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf18.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[phone_numberRegisterPage.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["1-604-514-2462"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:38]]></Time>
+<TimeTick>1641856658</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="39" Source="Action1" SourceLine="35" >
+<Disp><![CDATA[phone_numberRegisterPage.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf19.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[countryListboxRegisterPage.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Canada"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:39]]></Time>
+<TimeTick>1641856659</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="41" Source="Action1" SourceLine="36" >
+<Disp><![CDATA[countryListboxRegisterPage.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf20.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[i_agree.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["ON"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:39]]></Time>
+<TimeTick>1641856659</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="43" Source="Action1" SourceLine="37" >
+<Disp><![CDATA[i_agree.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf21.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[register_btnundefined.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:39]]></Time>
+<TimeTick>1641856659</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="45" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[register_btnundefined.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf22.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[Advantage Shopping.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:40]]></Time>
+<TimeTick>1641856660</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="48" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[Advantage Shopping.Sync]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf23.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[New_User_Name]]></Obj>
+<Details plainTxt="False" ><![CDATA[WebElement]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:42]]></Time>
+<TimeTick>1641856662</TimeTick>
+<HtmlStep rID="T28">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "Confirm New User": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 1/10/2022 - 15:17:43</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">Confirm New User Results&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<TD class="Text" Title="">html tag&nbsp;</TD>
+				<TD class="Text" Title="">SPAN&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<TD class="Text" Title="">innertext&nbsp;</TD>
+				<TD class="Text" Title="">Ama2147&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1641856663</TimeTick>
+<NodeArgs eType="Verification" icon="7" nRep="51" status="Passed" Source="Action1" SourceLine="41" >
+<Disp><![CDATA[Checkpoint "Confirm New User"]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf25.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="7" nRep="50" status="Passed" Source="Action1" SourceLine="41" >
+<Disp><![CDATA[New_User_Name]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf24.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[View Details.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["visible", True, True, 20000]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:50]]></Time>
+<TimeTick>1641856670</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="53" Source="Action1" SourceLine="45" >
+<Disp><![CDATA[View Details.WaitProperty]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf26.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[View Details.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:52]]></Time>
+<TimeTick>1641856672</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="55" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[View Details.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf27.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[save_to_cart.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:53]]></Time>
+<TimeTick>1641856673</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="59" Source="Action1" SourceLine="47" >
+<Disp><![CDATA[save_to_cart.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf28.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[ShoppingCart.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:53]]></Time>
+<TimeTick>1641856673</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="61" Source="Action1" SourceLine="49" >
+<Disp><![CDATA[ShoppingCart.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf29.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[check_out_btn.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:54]]></Time>
+<TimeTick>1641856674</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="63" Source="Action1" SourceLine="50" >
+<Disp><![CDATA[check_out_btn.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf30.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[next_btn.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:55]]></Time>
+<TimeTick>1641856675</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="67" Source="Action1" SourceLine="51" >
+<Disp><![CDATA[next_btn.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf31.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[SafePay username.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:55]]></Time>
+<TimeTick>1641856675</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="69" Source="Action1" SourceLine="52" >
+<Disp><![CDATA[SafePay username.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf32.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[safepay_username.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["spuser"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:56]]></Time>
+<TimeTick>1641856676</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="71" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[safepay_username.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf33.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[SafePay password.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:56]]></Time>
+<TimeTick>1641856676</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="73" Source="Action1" SourceLine="54" >
+<Disp><![CDATA[SafePay password.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf34.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[safepay_password.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Sp1234"]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:57]]></Time>
+<TimeTick>1641856677</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="75" Source="Action1" SourceLine="55" >
+<Disp><![CDATA[safepay_password.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf35.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[pay_now_btn_SAFEPAY.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:57]]></Time>
+<TimeTick>1641856677</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="77" Source="Action1" SourceLine="56" >
+<Disp><![CDATA[pay_now_btn_SAFEPAY.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf36.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[trackingNumberLabel]]></Obj>
+<Details plainTxt="False" ><![CDATA[WebElement]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:57]]></Time>
+<TimeTick>1641856677</TimeTick>
+<HtmlStep rID="T41">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Output Value "trackingNumberLabel": </span><span class="DoneHigh">Done</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 1/10/2022 - 15:17:58</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">trackingNumberLabel Results&nbsp;</td></tr>
+<tr><th colspan=4 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Captured Value&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Type&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Name&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=4 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=4 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td class="text">innertext&nbsp;</td>
+				<td class="text">&nbsp;</td>
+				<td class="text">DataTable&nbsp;</td>
+				<td class="text">out_TrackingNumber&nbsp;</td>
+</TR>
+			<TR><th colspan=4 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1641856678</TimeTick>
+<NodeArgs eType="Verification" icon="7" nRep="80" Source="Action1" SourceLine="59" >
+<Disp><![CDATA[Output "trackingNumberLabel"]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf38.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="7" nRep="79" Source="Action1" SourceLine="59" >
+<Disp><![CDATA[trackingNumberLabel]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf37.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[orderNumberLabel]]></Obj>
+<Details plainTxt="False" ><![CDATA[WebElement]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:58]]></Time>
+<TimeTick>1641856678</TimeTick>
+<HtmlStep rID="T43">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Output Value "orderNumberLabel": </span><span class="DoneHigh">Done</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 1/10/2022 - 15:17:58</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">orderNumberLabel Results&nbsp;</td></tr>
+<tr><th colspan=4 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Captured Value&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Type&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Name&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=4 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=4 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td class="text">innertext&nbsp;</td>
+				<td class="text">1816184970&nbsp;</td>
+				<td class="text">DataTable&nbsp;</td>
+				<td class="text">out_OrderNumber&nbsp;</td>
+</TR>
+			<TR><th colspan=4 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1641856678</TimeTick>
+<NodeArgs eType="Verification" icon="7" nRep="83" Source="Action1" SourceLine="60" >
+<Disp><![CDATA[Output "orderNumberLabel"]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf40.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="7" nRep="82" Source="Action1" SourceLine="60" >
+<Disp><![CDATA[orderNumberLabel]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf39.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[UserMenu_2.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:58]]></Time>
+<TimeTick>1641856678</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="85" Source="Action1" SourceLine="62" >
+<Disp><![CDATA[UserMenu_2.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf41.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[Sign out.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:17:58]]></Time>
+<TimeTick>1641856678</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="87" Source="Action1" SourceLine="63" >
+<Disp><![CDATA[Sign out.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf42.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="15" status="Passed" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[Advantage Shopping]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf6.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="14" status="Passed" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[Advantage Shopping]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf5.xml]]></Path>
+<ASHilite><![CDATA[6619924]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="1/10/2022 - 15:17:06" eTime="1/10/2022 - 15:17:58" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="5" nRep="12" status="Passed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T46">
+<AName><![CDATA[Checkout Shopping Cart]]></AName>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[Advantage Shopping]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:19]]></Time>
+<TimeTick>1641856699</TimeTick>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[Advantage Shopping]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:20]]></Time>
+<TimeTick>1641856700</TimeTick>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[View Details.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["visible", True, True, 20000]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:20]]></Time>
+<TimeTick>1641856700</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="93" Source="Checkout Shopping Cart" SourceLine="1" >
+<Disp><![CDATA[View Details.WaitProperty]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf45.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[View Details.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:21]]></Time>
+<TimeTick>1641856701</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="95" Source="Checkout Shopping Cart" SourceLine="2" >
+<Disp><![CDATA[View Details.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf46.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[save_to_cart.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:22]]></Time>
+<TimeTick>1641856702</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="97" Source="Checkout Shopping Cart" SourceLine="3" >
+<Disp><![CDATA[save_to_cart.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf47.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[ShoppingCart.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:22]]></Time>
+<TimeTick>1641856702</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="99" Source="Checkout Shopping Cart" SourceLine="5" >
+<Disp><![CDATA[ShoppingCart.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf48.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[check_out_btn.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:23]]></Time>
+<TimeTick>1641856703</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="101" Source="Checkout Shopping Cart" SourceLine="6" >
+<Disp><![CDATA[check_out_btn.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf49.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[next_btn]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;identify&nbsp;the&nbsp;object&nbsp;"next_btn"&nbsp;(of&nbsp;class&nbsp;WebButton).<br/>Verify&nbsp;that&nbsp;this&nbsp;object's&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:44]]></Time>
+<TimeTick>1641856724</TimeTick>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[next_btn]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Mercury Class = WebButton<br>Html Tag = BUTTON<br>_xpath = //BUTTON[@id="next_btn"]<br>|Visible = -1<br>Value = NEXT<br>Type = submit<br>Name = NEXT<br>Html Id = next_btn<br>DHTML Class = a-button nextBtn marginTop75 ng-scope<br>acc_name = <br>]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:44]]></Time>
+<TimeTick>1641856724</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="146" status="Warning" nType="Description" Source="Checkout Shopping Cart" SourceLine="7" >
+<Disp><![CDATA[next_btn]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[ObjectNotFoundError_Recovery_Scenario]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><dl><b><u>Scenario</u>: </b>ObjectNotFoundError_Recovery_Scenario<br><b><u>Defined in</u>: </b>ObjectNotFoundError_Recovery_Scenario.qrs<br><b><u>Description</u>: </b><br><b><u>Post-recovery operation</u>: </b>Proceed to next test iteration.<br><br><b><u>Activated by trigger</u>:</b><dd><u>Type</u>: Test run error<br><u>The error string</u>: Cannot identify the object</dd><dt><br><b><u>The current test step details</u>:</b><dd><u>Object</u>: WebButton("next_btn")<br><u>Method</u>: Click<br><u>Arguments</u>: EMPTY<br><u>Result</u>: Cannot identify the object</dd></dt></dl></div></SPAN>]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:44]]></Time>
+<TimeTick>1641856724</TimeTick>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[Enter]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><b><u>Generate the keyboard event</u>:</b> Enter</div></SPAN>]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:44]]></Time>
+<TimeTick>1641856724</TimeTick>
+<NodeArgs eType="Replay" icon="15" nRep="148" nType="Keyboard operation" Source="Checkout Shopping Cart" SourceLine="7" >
+<Disp><![CDATA[Enter]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[Skip Iteration]]></Obj>
+<Details plainTxt="False" ><![CDATA[Proceed to next test iteration.]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:44]]></Time>
+<TimeTick>1641856724</TimeTick>
+<NodeArgs eType="Replay" icon="16" nRep="149" nType="Test" Source="Checkout Shopping Cart" SourceLine="7" >
+<Disp><![CDATA[Skip Iteration]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="14" nRep="147" nType="Error" Source="Checkout Shopping Cart" SourceLine="7" >
+<Disp><![CDATA[ObjectNotFoundError_Recovery_Scenario]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="12" nRep="145" status="Warning" nType="Run Error" Source="Checkout Shopping Cart" SourceLine="7" >
+<Disp><![CDATA[next_btn]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[Stop global iteration replay]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[1/10/2022 - 15:18:44]]></Time>
+<TimeTick>1641856724</TimeTick>
+<NodeArgs eType="General" icon="17" nRep="150" status="Information" >
+<Disp><![CDATA[Stop global iteration replay]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="92" status="Warning" Source="Checkout Shopping Cart" SourceLine="1" >
+<Disp><![CDATA[Advantage Shopping]]></Disp>
+<BtmPane vType="Mercury.SSHWeb" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf44.xml]]></Path>
+<ASHilite><![CDATA[10000000]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="91" status="Warning" Source="Checkout Shopping Cart" SourceLine="1" >
+<Disp><![CDATA[Advantage Shopping]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf43.xml]]></Path>
+<ASHilite><![CDATA[6619924]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="1/10/2022 - 15:17:58" eTime="1/10/2022 - 15:18:44" passed="0" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="5" nRep="89" status="Warning" >
+<Disp><![CDATA[Checkout Shopping Cart Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Warning" >
+<Disp><![CDATA[AOS_TESTS Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="1/10/2022 - 15:17:02" eTime="1/10/2022 - 15:18:44" passed="2" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Warning" >
+<Disp><![CDATA[Test AOS_TESTS Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
